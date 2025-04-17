@@ -1,0 +1,1455 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  12pt,
+]{report}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{geometry}
+\geometry{
+  top=1in,
+  bottom=1in,
+  left=1in,
+  right=1in}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{fontspec}
+\setmainfont{Cormorant Garamond}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Mono}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\author{}
+\date{}
+
+\begin{document}
+
+
+\begin{center}
+
+\thispagestyle{empty}
+
+\vspace*{2in}
+
+\Huge \textbf{ACCESSIBILITY AND REAL ESTATE PRICES IN MEXICO CITY: A HEDONIC APPROACH}
+
+\vspace*{2in}
+
+\Large \textbf{ABRAHAM HAIM MAJLUF RIZO}
+
+\vspace*{0.25in}
+
+HARVARD UNIVERSITY GRADUATE SCHOOL OF DESIGN\\[0em]
+MASTER'S IN URBAN PLANNING THESIS
+
+\vspace*{0.25in}
+
+SPRING 2025
+
+\end{center}
+
+\chapter{INTRODUCTION}\label{introduction}
+
+XXX
+
+\newpage
+
+\chapter{LITERATURE REVIEW}\label{literature-review}
+
+\section{ACCESSIBILITY AS A CONCEPT}\label{accessibility-as-a-concept}
+
+Accessibility has been a core topic in urban planning literature since
+the mid-20th century (Hansen, 1959). Commonly defined as the ease of
+reaching desired destinations, accessibility reflects both the mobility
+afforded by transportation networks and the spatial distribution of
+opportunities---such as jobs, services, or amenities---along with the
+time, cost, and effort associated with travel (Boisjoly \& El-Geneidy,
+2017; Levinson \& Wu, 2020).
+
+Its significance lies in its influence on the economic value of urban
+land, shaping the intensity and type of development that occurs across
+different locations. Accessibility disparities are deeply intertwined
+with broader patterns of spatial and social inequality, as variations in
+access---often shaped by demographic and socioeconomic
+factors---directly impact quality of life and underscore the need for
+more equitable urban policy frameworks (Wachs \& Kumagai, 1973).
+
+The concept has demonstrated relevance across a wide range of urban
+processes, including commuting behaviors, employment access, service
+provision, real estate valuation and development, environmental
+sustainability, and social inclusion. Its centrality in shaping urban
+form and function continues to make accessibility a foundational lens
+through which urban dynamics are studied and interpreted (El-Geneidy \&
+Levinson, 2022; Levinson \& Wu, 2020; Cervero, Rood, \& Appleyard, 1999;
+Atuesta et al., 2018).
+
+\section{ACCESSIBILITY MEASUREMENTS}\label{accessibility-measurements}
+
+Accessibility measures vary widely in their conceptual foundations and
+methodological approaches. As outlined by Siddiq and Taylor (2021), one
+of the most straightforward approaches is the cumulative opportunities
+measure, which quantifies the number of destinations---typically jobs or
+services---reachable within a defined time or distance threshold. While
+valued for their simplicity and ease of communication, these measures
+assume all destinations offer equal utility, failing to account for
+variations in quality or desirability. To address this limitation,
+gravity-based measures incorporate a distance decay function that gives
+greater weight to closer destinations, reflecting the reduced likelihood
+of traveling to more distant locations. These models integrate the
+generalized cost of travel---such as time, distance, and monetary
+expense---offering a more nuanced representation of accessibility.
+Utility-based measures take this further by shifting the analytical
+focus from destinations to individuals or households. They incorporate
+factors such as user preferences, socioeconomic attributes, and
+perceptions of destination attractiveness, aiming to estimate the
+expected maximum utility derived from a set of travel alternatives. This
+allows for a more personalized and behaviorally grounded understanding
+of accessibility. Finally, constraints-based or space--time measures
+introduce a temporal dimension by acknowledging the scheduling and
+sequencing of daily activities. These approaches recognize that
+accessibility is not only spatial but also shaped by individuals'
+available time windows and activity patterns.
+
+In summary, accessibility measures span a spectrum from simple to
+theoretically robust. Cumulative opportunity measures are easier to
+compute and communicate but lack nuance, while more complex models
+capture behavioral and temporal dimensions at the cost of increased data
+and analytical demands (Siddiq \& Taylor, 2021). Despite the growing
+sophistication of accessibility research, its practical application in
+planning remains limited, often due to gaps between theoretical
+frameworks and real-world constraints (Boisjoly \& El-Geneidy, 2017).
+
+In addition to the conceptual variations in accessibility modeling,
+differences in how impedance is specified can significantly affect
+measurement outcomes, especially within the context of hedonic price
+models. Impedance refers to the resistance or effort required to reach a
+destination and is commonly categorized into five types: Euclidean
+distance, network distance, travel time, cost, and zone-based measures
+(Heyman et al., 2018). Euclidean distance represents straight-line
+proximity and offers a basic, objective baseline. Network distance adds
+realism by accounting for the actual traversable paths through a
+transport network. Travel time introduces temporal dynamics, considering
+congestion or average speed variations, while cost-based impedance
+captures monetary expenses associated with travel. Zone-based measures
+rely on spatial aggregations, such as administrative boundaries, and are
+often used when data is limited. However, these zonal aggregations are
+especially vulnerable to the Modifiable Areal Unit Problem (MAUP)---a
+spatial bias that can distort results depending on the size and
+configuration of the spatial units used. MAUP comprises two components:
+the scale effect, where statistical outcomes shift depending on the
+number or size of areal units, and the zoning effect, where boundary
+definitions alone can lead to different conclusions. These issues
+underscore the importance of using disaggregated data or carefully
+chosen spatial units to preserve local variation and ensure alignment
+with perceived accessibility (Heyman et al., 2018).
+
+Striking a balance between simplicity and complexity is crucial.
+Introducing stakeholders to basic cumulative measures may serve as a
+useful entry point, while simultaneously advocating for the added
+insights of distance-sensitive or utility-based models. As El-Geneidy
+and Levinson (2022) argue, the challenge lies in translating theoretical
+advancements into tools that are both actionable and accessible for
+planning practice.
+
+\section{ACCESSIBILITY IN THE HEDONIC PRICE MODEL
+FRAMEWORK}\label{accessibility-in-the-hedonic-price-model-framework}
+
+Hedonic pricing models (HPMs) provide a foundational framework for
+estimating the implicit value of individual product characteristics by
+analyzing observed prices and the attributes of differentiated goods.
+Rooted in Rosen's (1974) seminal work, this approach views goods as
+bundles of characteristics, aligning with theories of spatial
+equilibrium and equalizing differences. In the real estate context, this
+framework is especially relevant, as housing markets are inherently
+heterogeneous---each property is unique in its physical features,
+location, and historical usage, making precise valuation inherently
+complex.
+
+Unlike goods traded in efficient markets, real estate lacks product
+homogeneity, frequent transactions, and transparent pricing. Properties
+are not priced by individual attributes but as composite packages,
+creating what Rosen (1974) describes as implicit markets. Buyers and
+sellers negotiate based on subjective valuations of inseparable
+traits---such as location, size, amenities, and architectural
+style---rather than standardized units, which complicates pricing and
+contributes to overall market inefficiency (Evans, 1995).
+
+Despite these challenges, hedonic pricing models remain the dominant
+method for estimating residential property values, breaking down a
+home's sale price into the marginal contributions of its attributes.
+Since the mid-2000s, the literature on HPMs has expanded significantly,
+addressing key market disruptions (e.g., the Great Recession),
+integrating new thematic concerns such as climate vulnerability,
+financing structures, and neighborhood dynamics, and employing
+increasingly advanced methodologies. Recent approaches include
+instrumental variable techniques (e.g., 2SLS), hazard models, quantile
+regression, and machine learning tools such as random
+forests---reflecting the complexity and richness of contemporary housing
+data (Khoshnoud et al., 2023).
+
+Accessibility is a critical yet variably treated component in HPMs. Its
+influence on housing prices is well-documented, but its measurement
+varies significantly across studies, affecting both theoretical
+soundness and empirical reliability. As Heyman et al.~(2018) note,
+accessibility can be conceptualized using several frameworks---including
+spatial separation, cumulative opportunity, gravitational potential,
+utility-based access, and time-space constraints---each offering a
+distinct lens. The choice of measure can significantly shape outcomes,
+particularly given that buyers perceive and value accessibility
+differently depending on local context and individual preferences.
+
+Different modeling approaches have also emerged for constructing housing
+price indices, each with strengths and limitations. Repeat-sales indices
+track changes in property values by comparing repeat transactions of the
+same property. While effective in controlling for unobservable
+characteristics, these models face sample selection biases and assume
+stability in property attributes over time. In contrast,
+hedonic-regression-based indices allow for greater control over
+attribute-specific changes but are sensitive to omitted variables and
+model specification choices. As Wallace and Meese (1997) emphasize,
+hedonic indices may be more reliable for assessing local market
+behavior, while simpler metrics such as median sales prices remain
+useful for tracking broader housing market cycles.
+
+The era of big data is transforming real estate valuation, introducing
+new data sources---from online listings and remote sensing to IoT
+devices---and enabling models that can integrate real-time,
+multidimensional inputs. Machine learning models, including artificial
+neural networks, support vector machines, deep learning, and
+gradient-boosting algorithms such as XGBoost, offer strong predictive
+performance and adaptability to complex data structures. However, these
+models introduce new challenges around interpretability, particularly in
+policy contexts where transparency and accountability are critical (Wei
+et al., 2022). In modeling housing prices, accessibility specifications
+have traditionally relied on proximity to central business districts
+(CBDs), major roads, or public transit stations. However, recent machine
+learning models have revealed that street network connectivity, or local
+street closeness, may be a more stable and informative predictor of home
+values than simple CBD proximity (Liu et al., 2024). This insight
+challenges conventional assumptions in urban economic models and
+highlights the evolving role of urban form in shaping property values.
+
+Ultimately, the field continues to evolve toward more nuanced,
+behaviorally grounded, and technologically enabled valuation methods.
+Yet, the integration of accessibility remains a central concern, as its
+conceptualization and measurement directly influence valuation accuracy.
+Bridging this gap---between methodological sophistication and practical
+applicability---remains a key task for both researchers and
+practitioners seeking to better understand and shape urban real estate
+dynamics.
+
+\subsection{CURRENT EVIDENCE ON MEXICO
+CITY}\label{current-evidence-on-mexico-city}
+
+In the specific case of Mexico City, only one study performed by Atuesta
+et al.~(2018) was found. Here, the authors use geographically referenced
+data on new housing developments to estimate how households value
+accessibility to employment and transport infrastructure.
+
+Their results indicate that proximity to employment subcenters increases
+housing values by 1--3\%, suggesting that access to formal job markets
+is capitalized into real estate prices. In contrast, proximity to the
+Central Business District (CBD) is considered a disamenity, reflecting
+the declining relevance of the historic core and the ongoing
+decentralization of employment in the city. The effects of proximity to
+Metro stations are non-linear: while homes located directly adjacent to
+stations may be discounted due to congestion, informal commerce, and
+insecurity, a moderate distance from Metro infrastructure is associated
+with higher property values.
+
+These patterns are shaped by sharp socioeconomic divides. High-income
+households, who are more likely to own private vehicles, benefit more
+from accessibility and enjoy shorter commutes, while low-income
+households tend to live farther from job centers, often relying on
+informal employment and transport modes. This spatial mismatch
+reinforces patterns of segregation and limits access to economic
+opportunity.
+
+The authors argue that these challenges cannot be addressed through
+infrastructure investment alone. Instead, they emphasize the importance
+of integrated land-use and transport planning---such as transit-oriented
+development and the revitalization of urban cores---to make public
+transit systems more attractive and equitable across income groups.
+
+\newpage
+
+\chapter{METHODOLOGY}\label{methodology}
+
+This study adopts a theoretical framework that explores the relationship
+between real estate prices and three key dimensions: accessibility,
+dwelling quality, and neighborhood characteristics. The following
+sections detail the procedures for data collection and processing
+related to each of these components.
+
+\section{REAL ESTATE LISTINGS}\label{real-estate-listings}
+
+To compile a structured dataset of current real estate listings in
+Mexico City, a custom R script was developed to extract information from
+paginated JSON endpoints provided by a major online real estate broker.
+For each listing, the script captured a range of attributes, including
+listing identifiers and timestamps; property characteristics such as
+type, total and built surface area, number of bedrooms and bathrooms,
+and the presence of amenities like parking; as well as pricing
+information, including listed price and currency. Geographic details
+were also collected, covering street address, neighborhood, and
+geolocation coordinates.
+
+The data collection script was executed 16 times over a three-month
+period, from January to April 2025, with runs spaced at regular
+intervals to capture temporal variation in the real estate market. This
+repeated extraction enabled the construction of a longitudinal dataset,
+after which a cleaning and filtering procedure was applied. Duplicate
+entries were removed by retaining only the most recent record for each
+property, based on the retrieval date. The dataset was then filtered to
+include only properties listed for sale within the administrative
+boundaries of Mexico City and restricted to residential property types.
+Listing prices were standardized by converting all values to U.S.
+dollars using a fixed exchange rate of 20 MXN per USD for entries
+originally priced in Mexican pesos. The final dataset contains 1,560
+observations.
+
+\section{ACCESSIBILITY INDEX}\label{accessibility-index}
+
+While real estate listings served as the origin points in the
+accessibility analysis, destinations were drawn from the most recent
+National Directory of Economic Units (DENUE, 2024). This dataset
+provides granular, georreferenced information on individual economic
+establishments, including their 6-digit NAICS classification and
+corresponding employment size bands. These employment bands were
+converted into approximate numeric estimates using the midpoint of each
+range, with a tailored adjustment for the highest category to better
+reflect potential outliers. Establishments located within both Mexico
+City and adjacent municipalities in neighboring states were included to
+ensure spatial continuity, particularly for listings situated near the
+administrative boundaries of the city. In parallel, public space data
+was sourced from Mexico City open data portal.
+
+To support the routing engine required for travel time estimation, road
+network data were sourced from OpenStreetMap for both Mexico City and
+the State of Mexico. While state geometries were merged within R, the
+final consolidated routable network in Protocolbuffer Binary Format
+(PBF) was constructed externally using Osmosis, due to R's limitations
+in handling PBF file merging. This composite road network served as the
+base layer for accessibility analysis. Additionally, the most recent
+General Transit Feed Specification (GTFS, 2024) data for Mexico City
+were obtained from its open data portal.
+
+Multimodal travel time matrices were computed using the r5r routing
+engine. For each origin--destination pair, travel times were estimated
+under two transportation scenarios: private motor vehicle and public
+transit (combined with walking). The routing represented conditions on a
+typical weekday at 8:00 a.m. It is important to consider that r5r
+computed private travel times do not account for traffic.
+
+Accessibility was then assessed for seven types of opportunities
+relevant to residents: the number of jobs, and the number of economic
+units in sectors such as retail, education, health, recreation, and
+gastronomy---based on 2-digit NAICS codes (and 3-digit for gastronomy,
+only)---as well as public spaces as defined by the CDMX government. For
+each category, two accessibility measures were calculated: a cumulative
+opportunity measure, which counts the number of destinations reachable
+within 10, 20, and 30 minutes, and a gravity-based measure, which
+weights opportunities by their proximity using an exponential decay
+function with multiple parameters (0.05, 0.1, and 0.2). Accessibility
+was calculated under both public transit and private vehicle scenarios,
+resulting in a total of 28 indicators for each transport mode,
+destination type, and analytical method.
+
+\section{NEIGHBOURHOOD
+CHARACTERISTICS}\label{neighbourhood-characteristics}
+
+To contextualize real estate listings within neighborhood conditions,
+both crime data and block-level social development indicators were
+incorporated. The crime dataset included georeferenced events from 2023
+onward, published on the Mexico City open data portal, focusing only on
+incidents with physical harm. Each listing was spatially joined to
+nearby crime occurrences within a 500-meter buffer to estimate localized
+exposure to violent events. In addition, listings were linked to the
+corresponding block-level Social Development Index, a composite metric
+ranging from 0 to 1. This index represents an average of multiple
+dimensions of deprivation, including housing quality, sanitation, energy
+access, telecommunications, essential goods availability, education,
+social security, and health services. To further account for contextual
+variation, the corresponding municipality of each listing was registered
+as well to include heterogeneity across administrative boundaries.
+
+\section{REGRESSION SPECIFICATION}\label{regression-specification}
+
+The hedonic price model was specified as a log-log regression, estimated
+separately for both private and public accessibility, according to the
+following structure:
+
+\[
+log(Price_i) = \alpha + \beta log(Accessibility_{i}) + \gamma Dwelling_{i} + \delta Neighbourhood_{i} + \mu_i
+\]
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(i\) represents individual real estate listings;
+\item
+  \(Price_i\) denotes the listing price in USD for property \(i\);
+\item
+  \(Accessibility_{i}\) is a vector of accessibility variables for
+  listing \(i\) corresponding to different destination types (jobs,
+  retail, education, health, recreation, gastronomy, and public spaces);
+\item
+  \(Dwelling_{i}\) is a vector of dwelling characteristics for listing
+  \(i\), including constructed area (in squared meters), number of
+  bedrooms, bathrooms, and parking spaces;
+\item
+  \(Neighbourhood_{i}\) is a vector of neighbourhood-level
+  characteristics of listing \(i\), including the number of reported
+  crimes within a 500m radius, the Social Development Index of the
+  corresponding census block, and a categorical fixed effect for the
+  listing's municipality, capturing administrative-level variation.
+\item
+  \(\mu_{i}\) is the error term.
+\end{itemize}
+
+To evaluate model validity and ensure robust inference, standard
+regression diagnostics were conducted. The Breusch-Pagan test indicated
+the presence of heteroskedasticity, while the Durbin-Watson test
+suggested slight positive autocorrelation in the residuals. Furthermore,
+multicollinearity was identified among some accessibility indicators
+according to the Variance Inflation Factor (VIF) diagnostics---an
+expected outcome given the conceptual overlap between destination types.
+However, rather than removing these variables or applying dimensionality
+reduction techniques such as principal component analysis (PCA), all
+indicators were retained, as they represent the core constructs under
+study.
+
+While these violations do not bias the estimated coefficients themselves
+under OLS assumptions, they can affect the reliability of standard
+errors and inference. To address these issues while preserving the
+integrity of the specification, robust standard errors (via the
+Huber-White estimator) and municipality-clustered standard errors were
+employed. This approach corrects for heteroskedasticity and allows for
+arbitrary correlation of errors within municipalities, thereby
+addressing both multicollinearity-related inference issues and potential
+spatial autocorrelation within administrative boundaries. Residual
+normality was also assessed for both models using the Shapiro-Wilk test,
+which indicated deviations from normality. Given the moderate sample
+size and the use of robust and clustered standard errors, inference can
+be considered reliable despite this violation.
+
+\newpage
+
+\chapter{RESULTS}\label{results}
+
+This section presents the main empirical findings of the study. It is
+organized into three parts. First, we analyze the construction and
+behavior of the accessibility index, examining its methodological
+structure, sector-specific patterns, and spatial distribution. Second,
+we explore the dynamics of the real estate market, including overall
+price distributions and their relationship to accessibility levels.
+Finally, we present the results of hedonic price models that quantify
+the influence of accessibility and other factors on real estate values.
+
+\section{ACCESSIBILITY INDEX}\label{accessibility-index-1}
+
+This subsection presents a comprehensive accessibility analysis for
+Mexico City (CDMX), using urban blocks---the most detailed spatial
+resolution available from national census data---as the unit of origin.
+This approach captures how accessibility to jobs and essential services
+varies across the city, extending beyond the scope of real estate
+listings to include the broader urban structure.
+
+\subsection{METHODS AND INTERVAL
+ANALYSIS}\label{methods-and-interval-analysis}
+
+Figures 1 and 2 compare the distribution of job accessibility indices
+across Mexico City in 2024, using two measurement
+methodologies---cumulative and gravity-based---for both public and
+private modes of transportation.
+
+Figure 1 illustrates public job accessibility, accounting for walking
+and public transport as the primary modes of travel. The distribution of
+accessibility values is heavily right-skewed under both methodologies,
+with most spatial units exhibiting relatively low access to public
+sector employment under high impedance scenarios. As impedance
+decreases---either by extending time thresholds or reducing the decay
+parameter---the accessibility index increases, resulting in a broader
+and more dispersed distribution.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_methods_public_hist.png}
+
+}
+
+\caption{Public Job Accessibility by Measurement Methodology}
+
+\end{figure}%
+
+In contrast, Figure 2 presents private job accessibility, estimated
+using car-based travel. Across all impedance levels, distributions show
+substantially higher accessibility values, reflecting the broader
+spatial distribution of private employment and the relative advantage of
+car access in reaching jobs. In the cumulative panel, accessibility
+increases markedly as travel time thresholds expand, shifting the
+frequency distribution rightward from high to low impedance. This shift
+suggests that, under 20- or 30-minute thresholds, most job destinations
+become accessible when traffic is not considered---potentially
+diminishing the interpretive value of cumulative measures under such
+assumptions. The gravity-based panel exhibits decreasing concentration
+with increasing impedance, consistent with the logic of exponential
+decay applied in its computation.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_methods_private_hist.png}
+
+}
+
+\caption{Private Job Accessibility by Measurement Methodology}
+
+\end{figure}%
+
+Comparing the two figures highlights clear disparities between
+transportation modes. Private job accessibility not only yields higher
+values but also displays greater variance than public job accessibility.
+This suggests that individuals dependent on walking and public transport
+face more constrained access to employment opportunities. Furthermore,
+the interpretive validity of cumulative private accessibility under low
+impedance may be limited in contexts where congestion and traffic
+dynamics are excluded from travel time estimates.
+
+Figures 3 and 4 explore the degree of concordance between cumulative and
+gravity-based accessibility measures across various sectors in Mexico
+City during 2024. Based on the interpretations of Figures 1 and 2, the
+remaining of the present study focuses on low-impedance public
+accessibility and high-impedance private accessibility. Across both
+figures, a strong linear relationship is evident between the two
+measurement methodologies.
+
+In the public accessibility context (Figure 3), all sectors exhibit
+near-perfect correlations (R ≥ 0.99), with employment, education,
+recreation, and gastronomy showing virtual correlations of R = 1. This
+indicates that under low-impedance public transport conditions,
+cumulative and gravity-based measures yield highly consistent results,
+suggesting methodological interchangeability when evaluating access to
+these types of destinations.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_methods_public_aggr_corr.png}
+
+}
+
+\caption{Public Accessibility by Sector and Measurement Technology}
+
+\end{figure}%
+
+In the private accessibility context (Figure 4), correlations remain
+high but are slightly lower than in the public case, ranging from R =
+0.96 (health, public spaces) to R = 0.98 (employment, education,
+gastronomy). Although the distributions still align closely with the 1:1
+line, greater dispersion is observed relative to the public
+accessibility plots. This suggests a somewhat higher sensitivity to
+methodological differences under high-impedance conditions; nonetheless,
+the results remain strongly aligned.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_methods_private_aggr_corr.png}
+
+}
+
+\caption{Private Accessibility by Sector and Measurement Technology}
+
+\end{figure}%
+
+Overall, the comparison highlights a notable degree of alignment between
+cumulative and gravity-based methodologies across both sectors and
+travel modes. While gravity-based methods are often favored for their
+ability to model distance decay effects, cumulative measures may be
+preferred for their simplicity and interpretability. In this context,
+either method appears to serve as a valid proxy for the other under
+appropriate impedance assumptions. These findings reinforce the internal
+consistency of the accessibility modeling framework and provide
+methodological flexibility for practitioners choosing between ease of
+implementation and behavioral precision in accessibility assessments.
+For simplicity and easer interpretation, the remaining of this study
+will consider cumulative metrics.
+
+\subsection{SECTORIAL ANALYSIS}\label{sectorial-analysis}
+
+Figures 5 through 8 display the distribution of sectoral accessibility
+values in Mexico City during 2024 using violin plots, distinguishing
+between public and private accessibility and further separating
+employment-based (Figures 5 and 6) and economic unit-based (Figures 7
+and 8) indicators. These plots provide a more granular view of
+accessibility by economic sector, while also revealing the skewness and
+concentration of opportunities across Mexico City.
+
+Figure 5 presents public accessibility to employment. The distributions
+are notably right-skewed, particularly for \emph{Professional \&
+Administrative} and \emph{Industrial \& Logistics} sectors, where a
+large number of spatial units cluster at low accessibility levels.
+\emph{Retail \& Services} shows a relatively flatter and broader
+distribution, indicating more spatial dispersion in access to these
+jobs.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_sectorial_public_employment_violin.png}
+
+}
+
+\caption{Public Employment Accessibility Density by Sector}
+
+\end{figure}%
+
+In contrast, Figure 6 shows private accessibility to employment. All
+three employment categories display significantly higher accessibility
+values compared to their public counterparts, with distributions
+stretching further to the right. Nevertheless, strong concentration
+remains at lower access values, especially in Professional \&
+Administrative and Industrial \& Logistics sectors, highlighting
+persistent spatial disparities even in a car-oriented access model.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_sectorial_private_employment_violin.png}
+
+}
+
+\caption{Private Employment Accessibility Density by Sector}
+
+\end{figure}%
+
+Figure 7, representing public accessibility, again exhibits strong
+right-skewed distributions across all sectors. The most constrained
+access is seen in Recreation, Public Spaces, and Education, where a
+large share of the population has access to a limited number of
+facilities.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_sectorial_public_units_violin.png}
+
+}
+
+\caption{Public Economic Accessibility Density by Sector}
+
+\end{figure}%
+
+In Figure 8, private accessibility shows broader distributions and
+higher accessibility values across all sectors. The accessibility to
+Retail and Gastronomy units is particularly elevated, likely due to
+their dense and dispersed urban presence. However, Recreation and Public
+Spaces remain skewed toward lower values, suggesting that even with
+private mobility, access to urban amenities of collective use remains
+relatively geographically limited.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_sectorial_private_units_violin.png}
+
+}
+
+\caption{Private Economic Accessibility Density by Sector}
+
+\end{figure}%
+
+\subsection{SPATIAL ANALYSIS}\label{spatial-analysis}
+
+Figures 9 and 10 present the spatial distribution of average
+accessibility z-scores for public and private modes, respectively,
+aggregated across all analyzed sectors. The values represent
+standardized accessibility per urban block, with blue areas denoting
+above-average access and red areas reflecting below-average access.
+
+In Figure 9, public accessibility reveals a pronounced core-periphery
+pattern, aligned with public transit infrastructure and routes. Central
+blocks exhibit consistently high accessibility across sectors, forming a
+dense cluster of blue and purple zones. In contrast, peripheral zones
+are marked by deep red, indicating significant deviations below the
+citywide mean. This highlights stark geographical disparities in access
+to basic services and economic opportunities for transit-dependent
+populations.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_public_avg_z_map.png}
+
+}
+
+\caption{Average Public Accessibility per Urban Block}
+
+\end{figure}%
+
+Figure 10, which maps private accessibility displays a similar spatial
+trend, but with noticeably more diffuse gradients. While central zones
+still dominate in terms of accessibility, a broader spread of light-blue
+and neutral zones suggests that private vehicles slightly attenuate the
+intensity of spatial inequality, allowing some peripheral areas to reach
+modest accessibility levels. However, deep-red zones remain widespread
+in the urban periphery, especially to the south.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_private_avg_z_map.png}
+
+}
+
+\caption{Average Private Accessibility per Urban Block}
+
+\end{figure}%
+
+Figures 11 and 12 disaggregate these results by \textbf{sector},
+offering a more detailed visualization of public (Figure 11) and private
+(Figure 12) accessibility for each service type per urban block.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_public_aggr_z_map.png}
+
+}
+
+\caption{Public Accessibility by Sector per Urban Block}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/acc_private_aggr_z_map.png}
+
+}
+
+\caption{Private Accessibility by Sector per Urban Block}
+
+\end{figure}%
+
+A comparison of the two set of maps reaffirms the broader reach of
+private transportation, with blue zones extending farther from the city
+center across all sectors. Yet even with car access, spatial inequality
+persists. The z-score standardization facilitates comparability across
+sectors, making it evident that accessibility is not uniformly
+distributed, regardless of transport mode. Together, these figures
+underscore a persistent spatial divide in Mexico City's accessibility
+landscape. While private vehicles improve reach, they do not eliminate
+systemic disparities. Conversely, public transit accessibility remains
+highly centralized.
+
+\section{REAL ESTATE MARKET}\label{real-estate-market}
+
+This section examines the structure of the real estate market in Mexico
+City through the lens of property listings, focusing on both price
+dynamics and spatial accessibility. By analyzing listing data
+disaggregated by housing typology, we explore how prices vary across the
+city in both absolute terms and per square meter. These patterns are
+then contextualized within an accessibility framework, assessing how
+well-connected each listing is.
+
+\subsection{PRICE DISTRIBUTION}\label{price-distribution}
+
+Figures 13 and 14 compare the distribution of property values derived
+from real estate listings in Mexico City, disaggregated by houses and
+flats to contextualize within prevailing market dynamics.
+
+Figure 13 illustrates the distribution of absolute prices. Houses
+dominate the lower-to-mid price range, with a sharp peak between 100K
+and 300K USD, suggesting a concentration in more affordable areas.
+Flats, by contrast, exhibit a flatter and more extended distribution,
+with a notable presence in higher price brackets exceeding 500K USD.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_price_hist.png}
+
+}
+
+\caption{Dwelling Price Distribution by Type}
+
+\end{figure}%
+
+Figure 14 shifts focus to price per square meter, revealing a more
+nuanced distinction between dwelling types. Flats tend to cluster in the
+lower unit price ranges, with most listings concentrated between 1K and
+2K USD per square meter, suggesting a higher frequency of smaller or
+more standardized units in relatively lower-cost locations. Houses, by
+contrast, display a broader distribution skewed toward higher
+price-per-square-meter values, peaking between 2K and 3K USD and
+extending further into the upper range.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_price_m2_hist.png}
+
+}
+
+\caption{Dwelling Price per m2 Distribution per Type}
+
+\end{figure}%
+
+Figure 15 shows the spatial distribution of real estate listings used in
+the sample, represented as point data across Mexico City (CDMX). The
+spatial pattern reveals a strong central clustering, with the highest
+concentration of listings located in and around the urban core,
+particularly in the central-western zones. While the density of listings
+decreases toward the urban periphery, the dataset achieves broad spatial
+coverage across most of Mexico City's territory.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_sample_map.png}
+
+}
+
+\caption{Real Estate Listings}
+
+\end{figure}%
+
+\subsection{ACCESSIBILITY ANALYSIS}\label{accessibility-analysis}
+
+Figure 16 displays the relationship between real estate listing prices
+(per square meter) and public transport accessibility. Results show that
+45.8\% of listings fall into the low-access, low-price quadrant. A
+smaller share (18.3\%) appears in the low-access, high-price quadrant.
+Listings with both high accessibility and high prices account for only
+22.9\%, while the high-access, low-price quadrant---a segment of
+particular interest for affordability and value---represents just 12.9\%
+of the total.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_acc_pub_scat.png}
+
+}
+
+\caption{Real Estate Prices vs.~Average Public Accessibility}
+
+\end{figure}%
+
+The spatial dynamics are further illustrated in Figure 17, which maps
+the quadrant classifications from the public accessibility analysis. The
+low-access, low-price listings dominate the urban periphery. The
+high-access, high-price properties cluster around the city core and
+well-connected central-western corridors. Only a few high-access,
+low-price listings are visible, while low-access, high-price listings
+are scattered across less connected but still expensive zones.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_acc_pub_map.png}
+
+}
+
+\caption{Real Estate Listings by Public Price-Access Quadrant}
+
+\end{figure}%
+
+Figure 18 plots the same relationship using private accessibility. The
+share of listings in the high-access, high-price quadrant increases to
+26.5\%. Similarly, the high-access, low-price segment grows to 20.6\%.
+Meanwhile, the low-access, low-price quadrant decreases to 38.2\%, and
+the low-access, high-price quadrant drops to 14.8\%. Overall, private
+accessibility appears to reduce the concentration of listings in the
+most disadvantaged category while expanding the potential for spatial
+opportunity in areas where public transport remains limited.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_acc_priv_scat.png}
+
+}
+
+\caption{Real Estate Prices vs.~Average Private Accessibility}
+
+\end{figure}%
+
+Figure 19, based on private accessibility, shows a notable spatial
+expansion of the high-access quadrants. High-access/high-price listings
+extend further beyond the core into more peripheral but car-connected
+areas, while affordable properties with high private accessibility are
+more broadly distributed across intermediate zones. The
+low-access/low-price area contracts, though it remains dominant in the
+far periphery, and the low-access/high-price is less prominent.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/re_acc_priv_map.png}
+
+}
+
+\caption{Real Estate Listings by Private Price-Access Quadrant}
+
+\end{figure}%
+
+\section{HEDONIC PRICE MODEL RESULTS}\label{hedonic-price-model-results}
+
+This section presents the results of the hedonic pricing models
+examining the relationship between real estate listing prices and
+accessibility, estimated separately for public and private transport
+modes. Both models include accessibility to seven destination
+types---employment, education, gastronomy, health, public spaces,
+recreation, and retail---while controlling for structural dwelling
+attributes and neighborhood characteristics, including local crime
+rates, a social development index, and municipality-level fixed effects.
+The log-log specification allows coefficients to be interpreted as
+elasticities.
+
+\subsection{PUBLIC ACCESSIBILITY}\label{public-accessibility}
+
+The results for the public-based model are presented in Figure 20. The
+model explains a high proportion of the variation in housing prices,
+with an adjusted R² of 0.837 across all specifications. The most robust
+and statistically significant predictor is employment accessibility,
+which has a positive elasticity of 0.242 (p \textless{} 0.001, for the
+three scenarios), with a 95\% confidence interval of {[}0.127, 0.357{]}
+under the most conservative scenario with clustered standard errors.
+This suggests that---caeteris paribus and on average--- a 10\% increase
+in cumulative job accessibility is associated with approximately a 2.4\%
+increase in listing price.
+
+Education accessibility is negatively associated with price, with a
+coefficient of --0.155. This effect is statistically significant under
+OLS (CI: {[}--0.266, --0.044{]}) and robust standard errors (CI:
+{[}--0.281, --0.029{]}), indicating that greater proximity to
+educational facilities is caeteris paribus, on average, related with
+lower listing prices. However, the effect loses statistical significance
+under clustered standard errors (CI: {[}--0.383, 0.073{]}).
+
+Gastronomy accessibility has a positive effect on housing prices, with a
+coefficient of 0.169 that is statistically significant under both OLS
+and robust standard error specifications (p \textless{} 0.05), and a
+95\% confidence interval of {[}0.006, 0.331{]} in the latter. However,
+when clustering standard errors at the municipal level, the confidence
+interval widens substantially to {[}--0.113, 0.450{]}, encompassing zero
+and indicating that the effect may not be robust to spatial correlation.
+
+A similar pattern is observed for health accessibility, which is
+positively associated with price in the OLS and robust models with a
+coefficient of 0.066 (p \textless{} 0.05), and a 95\% CI of {[}0.005,
+0.127{]} under both. Yet, the effect becomes statistically insignificant
+when clustering is applied (CI: {[}--0.055, 0.187{]}), suggesting that
+these associations may not be robust to spatial correlation.
+
+In contrast, public space and recreation accessibility show no
+significant relationship with listing prices under any model
+specification, with confidence intervals consistently centered around
+zero, indicating a lack of systematic association.
+
+Notably, retail accessibility exhibits a consistently negative effect
+across all estimation strategies, with a coefficient of --0.274 and a
+95\% confidence interval under clustered standard errors of {[}--0.441,
+--0.107{]}. This suggests that---caeteris paribus and on average---a
+10\% increase in cumulative retail accessibility is associated with
+approximately a 2.7\% decrease in listing price. This robust finding
+suggests that, contrary to conventional expectations, proximity to
+retail may be perceived as a disamenity.
+
+Taken together, these results highlight the differentiated role of
+public accessibility dimensions in shaping housing prices. While
+employment accessibility emerges as the most robust and consistently
+positive determinant, other amenities such as education, health, and
+gastronomy exhibit more context-dependent effects that weaken once
+spatial clustering is accounted for. The lack of association for public
+space and recreation suggests these amenities may not be capitalized
+into housing prices in a systematic way, at least not through the
+mechanisms captured here. Conversely, the negative capitalization of
+retail accessibility---persistent across all model
+specifications---challenges common assumptions about commercial
+proximity as a universal benefit.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/regression_table_public.png}
+
+}
+
+\caption{Public Accessibility Model (Access Variables Only)}
+
+\end{figure}%
+
+\subsection{PRIVATE ACCESSIBILITY}\label{private-accessibility}
+
+The results for the private-based model are presented in Figure 21. The
+model demonstrates strong explanatory power, with an adjusted R² of
+0.839 across all specifications, indicating that the model accounts for
+a large proportion of the variation in listing prices. As in the public
+model, the most consistent and robust predictor is employment
+accessibility, which has a positive elasticity of 0.540 (p \textless{}
+0.001 under OLS and robust SEs; p \textless{} 0.05 under clustered SEs).
+The 95\% confidence interval under clustered standard errors is
+{[}0.116, 0.963{]}, reinforcing the interpretation that---caeteris
+paribus and on average---a 10\% increase in car-based employment
+accessibility is associated with a 5.4\% increase in listing price. This
+effect is not only statistically significant but also substantively
+stronger than in the public accessibility model.
+
+Education accessibility is negatively associated with price, with a
+coefficient of --0.209. The effect is statistically significant in the
+OLS model (p \textless{} 0.05, CI: {[}--0.402, --0.015{]}) and
+marginally significant under robust standard errors (p \textless{} 0.1,
+CI: {[}--0.422, 0.004{]}), but the effect weakens under clustered
+standard errors, where the 95\% confidence interval expands to
+{[}--0.675, 0.258{]} and crosses zero.
+
+For other amenities, gastronomy accessibility shows no statistically
+significant association with price under any specification. Its
+coefficient is positive but close to zero (0.044), and the clustered
+confidence interval ({[}--0.421, 0.510{]}) confirms the absence of a
+reliable relationship. Similarly, health accessibility has no effect on
+prices, with a coefficient of --0.006 and a clustered CI of {[}--0.232,
+0.220{]}.
+
+Public spaces and recreation accessibility likewise do not show
+statistically significant effects. Public spaces have a positive
+coefficient of 0.055, but the clustered confidence interval ({[}--0.067,
+0.177{]}) crosses zero. Recreation has a negative coefficient (--0.065)
+and similarly wide and inconclusive confidence intervals {[}--0.440,
+0.310{]}, indicating that neither amenity is systematically capitalized
+into listing prices when measured through private access.
+
+As in the public accessibility model, retail accessibility exhibits a
+consistently strong and negative association with listing price. The
+coefficient is --0.326, statistically significant at p \textless{} 0.001
+across all specifications. The clustered confidence interval
+({[}--0.496, --0.157{]}) remains narrow and well below zero, confirming
+the robustness of this finding. This suggests that---caeteris paribus
+and on average---a 10\% increase in cumulative car-based retail
+accessibility is associated with a 3.3\% decrease in listing price.
+
+These results highlight the differentiated influence of private
+accessibility dimensions on housing prices in Mexico City. Employment
+accessibility by car stands out as the most robust and consistently
+positive predictor, suggesting that job reachability via private
+transport is highly valued and strongly capitalized into property
+values. In contrast, amenities such as education, health, gastronomy,
+public spaces, and recreation show limited or inconsistent effects, with
+their associations weakening or disappearing once spatial dependence is
+accounted for. As in the public model, the consistently negative
+relationship between retail accessibility and price challenges
+assumptions about the inherent desirability of commercial proximity,
+suggesting that higher retail density may, in some contexts, signal
+disamenities that detract from residential value.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{output_vis/regression_table_private.png}
+
+}
+
+\caption{Private Accessibility Model (Access Variables Only)}
+
+\end{figure}%
+
+\newpage
+
+\chapter{DISCUSSION}\label{discussion}
+
+The findings of this study offer important insights into how various
+forms of accessibility are capitalized into housing prices in Mexico
+City. Drawing from hedonic pricing models, the results highlight spatial
+disparities in access to employment and amenities, while also revealing
+the differentiated influence of accessibility across transportation
+modes and destination types. These patterns contribute to ongoing
+debates in the accessibility literature regarding how access is
+measured, perceived, and valued in real estate markets (Boisjoly \&
+El-Geneidy, 2017; Levinson \& Wu, 2020; Heyman et al., 2018).
+
+The accessibility analysis confirms the persistence of a pronounced
+core--periphery divide in Mexico City, especially under public transport
+conditions. This pattern mirrors findings by Atuesta et al.~(2018), who
+observed that employment accessibility in Mexico City remains highly
+concentrated in central areas and unequally distributed along
+socioeconomic lines. In particular, high-income households tend to
+benefit from proximity to job centers and mobility via private vehicles,
+while low-income populations are often relegated to peripheral zones
+with limited access to formal employment and public transport. The
+spatial clustering of high public accessibility in central and western
+districts underscores these structural disparities, reinforcing the
+barriers faced by transit-dependent populations in outlying areas.
+Although private vehicle access slightly reduces this divide by
+extending reach into intermediate zones, it does not overcome the
+underlying inequality in spatial opportunity.
+
+Building on these foundational insights, the present study advances the
+analysis of spatial accessibility by disaggregating access by
+sector---an innovation that reveals important nuances in how different
+types of opportunities are distributed across the city. While previous
+studies have primarily focused on employment, this analysis incorporates
+a diverse range of destinations, including education, health, retail,
+gastronomy, recreation, and public spaces. This multidimensional
+approach uncovers uneven spatial patterns across sectors, suggesting
+that access to certain amenities remains highly centralized or limited
+depending on the mode of transport.
+
+Methodologically, the study also addresses several limitations common in
+urban accessibility research. First, by using highly disaggregated
+spatial units---urban blocks as origins---it helps mitigate the
+Modifiable Areal Unit Problem (MAUP), which can distort results when
+coarser or arbitrary zones are used for modeling (Heyman et al., 2018).
+Second, accessibility is computed using both cumulative and
+gravity-based approaches, capturing different dimensions of spatial
+reach. The strong correlation between both measures suggests that
+simpler metrics may serve as practical proxies for more complex
+formulations under certain conditions. This supports the claim by Siddiq
+and Taylor (2021) that cumulative opportunities can be effective tools
+in planning practice, especially when resources for behavioral modeling
+are limited. However, the dispersion observed in the private mode
+underscores that sensitivity to measurement assumptions increases with
+impedance, suggesting that planners should exercise caution when
+interpreting accessibility under longer travel time assumptions or in
+uncongested car-centric models.
+
+Moreover, when accessibility is viewed in relation to housing values,
+the results from the quadrant analysis show that low accessibility does
+not always equate to lower property prices. In fact, some high-value
+residential areas exhibit poor accessibility levels, suggesting that
+spatial isolation may be perceived as a desirable feature by
+higher-income households seeking privacy, exclusivity, or distance from
+urban intensity. These dynamics echo Wachs and Kumagai's (1973)
+conception of physical accessibility as a social indicator---where
+access not only reflects urban structure but also reveals embedded
+patterns of exclusion shaped by income, infrastructure, and urban form.
+
+When accessibility is linked to property values through hedonic
+modeling, the findings affirm Rosen's (1974) theory that spatial
+attributes---such as reachability of destinations---are capitalized into
+housing prices as part of the location bundle. Employment accessibility
+emerges as the most robust predictor across both models, with
+elasticities ranging from 0.24 under public transit to 0.54 under
+car-based access. This reinforces the central role of job accessibility
+in shaping urban land values, consistent with evidence from developing
+contexts (Atuesta et al., 2018).
+
+Compared to Atuesta et al.'s (2018) estimates---suggesting that a 1\%
+reduction in distance to employment subcenters increases housing values
+by 1--3\%---the elasticities reported here are notably smaller in
+relative terms. This difference partly reflects methodological
+divergences: whereas Atuesta et al.~rely on distance to predefined
+employment subcenters as a proxy for accessibility, the present study
+adopts a cumulative opportunities approach, computed from census
+block-level origins to thousands of georreferenced destinations,
+providing a more spatially granular representation of access. Moreover,
+the regression framework employed here incorporates a broader set of
+control variables, including dwelling characteristics, local crime
+exposure, social development indicators, and municipal fixed
+effects---enhancing the robustness of the estimates by reducing
+potential omitted variable bias. Nevertheless, differences in data
+sources and time periods likely contribute as well. Atuesta's analysis
+covers standardized housing projects from 2002 to 2013, whereas this
+study examines real estate listings from 2024, capturing a more
+heterogeneous housing market under contemporary spatial and
+institutional conditions. Taken together, these factors help explain why
+the magnitude of capitalization differs, while affirming the consistent
+directional importance of employment accessibility in urban housing
+markets.
+
+The present study also challenges conventional assumptions about the
+uniform value of accessibility. Access to education, health, gastronomy,
+and public spaces shows limited or context-dependent effects, with many
+associations weakening once spatial clustering is accounted for. Perhaps
+most striking is the consistent negative association between retail
+accessibility and housing prices---across both transport modes and all
+specifications. This challenges widely held assumptions about linear
+relationships between accessibility and house prices, potentially
+exhibiting thresholds where its effect saturates or diminishes (e.g.,
+Liu et al., 2024) suggesting that retail density may also signal
+congestion, noise, or informal activity, especially in large cities.
+
+It is important to acknowledge, however, that the accessibility
+indicators used in this study are based on broad 2-digit classifications
+of economic units following the NAICS system, without further
+disaggregation by quality, specialization, or service intensity. As a
+result, these categories may encompass a wide variety of establishments
+with differing levels of desirability, functionality, or user
+perception. This aggregation could obscure localized effects, especially
+in cases where accessibility to higher-quality or better-managed
+facilities might positively influence property values, while proximity
+to lower-quality or oversaturated services might do the opposite. In
+addition, the current structure does not account for the size or
+capacity of each economic unit. All establishments are weighted equally,
+regardless of their employment level. While alternative
+approaches---such as measuring accessibility by total jobs per
+sector---could provide more nuanced estimates of economic scale and
+influence, they also introduce new complications. Specifically, job
+counts may reflect administrative or support roles unrelated to the
+primary function of the establishment, or incorporate sectoral
+distortions due to firm size and internal hierarchies, thereby
+complicating the behavioral interpretation of access. These limitations
+align with Heyman et al.'s (2018) critique that proximity alone cannot
+fully capture the experiential or qualitative dimensions of
+accessibility, particularly in dense urban contexts where perceptions of
+congestion, noise, or informal activity may mediate the value of nearby
+amenities.
+
+An additional methodological consideration concerns the presence of
+multicollinearity among the accessibility indicators. Because many
+destination types tend to co-locate in urban space, their respective
+accessibility measures are often highly correlated. While
+multicollinearity does not bias coefficient estimates, it can inflate
+standard errors and thereby reduce the statistical significance of
+individual predictors, potentially obscuring meaningful relationships.
+This is particularly relevant when interpreting the weaker or
+inconsistent effects observed for certain amenities. In this study, all
+accessibility indicators were deliberately retained to preserve the
+sectoral focus and interpretive clarity of the model, rather than apply
+dimensionality reduction techniques like PCA. To mitigate the
+inferential uncertainty that may result from multicollinearity---as well
+as spatial autocorrelation---clustered standard errors at the municipal
+level were employed. This specification produces more conservative
+estimates, allowing for correlated error structures within local
+submarkets while maintaining the integrity of the model's structural
+assumptions.
+
+Moreover, while the model controls for a range of structural and
+neighborhood-level factors and incorporates fixed effects and clustered
+standard errors at the municipal level, it is important to recognize
+that the analysis is designed to capture broader, citywide patterns
+rather than localized dynamics. As such, the model is more reflective of
+average relationships across the urban region than of specific
+neighborhoods or submarkets. These local dynamics, shaped by complex
+socio-spatial histories, land use patterns, and community preferences,
+may exert significant influence on housing prices but remain unobserved
+in this framework. While neighborhood-level controls such as crime
+incidence and social development index help account for some of this
+variation, the absence of finer-scale fixed effects and the sample
+distribution reflects a necessary tradeoff driven by data and sample
+size constraints. As such, the findings should be interpreted as
+identifying average structural relationships across Mexico City, rather
+than providing full explanatory coverage of localized valuation
+processes.
+
+These results highlight a tension between accessibility as a normative
+planning goal and accessibility as a market-valued trait. While policy
+frameworks often prioritize increasing access to services and jobs for
+equity and efficiency reasons (El-Geneidy \& Levinson, 2022), the
+housing market may assign variable and sometimes negative value to these
+same features, depending on how they intersect with perceptions of
+quality, safety, and environmental context. This underscores the
+importance of integrating behavioral realism and local contextual
+sensitivity into accessibility modeling---especially when applying these
+insights to housing policy, transit-oriented development, or land value
+capture mechanisms.
+
+\newpage
+
+\chapter{CONCLUSION}\label{conclusion}
+
+XXX
+
+\newpage
+
+\chapter{REFERENCES}\label{references}
+
+\begin{itemize}
+\item
+  Atuesta, L. H., Ibarra-Olivo, J. E., Lozano-Gracia, N., \& Deichmann,
+  U. (2018). Access to employment and property values in Mexico.
+  \emph{Regional Science and Urban Economics}, \emph{70}, 142--154.
+  https://doi.org/10.1016/j.regsciurbeco.2018.03.005
+\item
+  Boisjoly, G., \& El-Geneidy, A. M. (2017). The insider: A planners'
+  perspective on accessibility. \emph{Journal of Transport Geography},
+  \emph{64}, 33--43.
+\item
+  Cervero, R., Rood, T., \& Appleyard, B. (1999). Tracking
+  accessibility: Employment and housing opportunities in the San
+  Francisco Bay Area. \emph{Environment and Planning A: Economy and
+  Space}, \emph{31}(7), 1259--1278. https://doi.org/10.1068/a311259
+\item
+  El-Geneidy, A., \& Levinson, D. (2022). Making accessibility work in
+  practice. \emph{Transport Reviews}, \emph{42}(2), 129--133.
+\item
+  Evans, A. W. (1995). The property market: Ninety per cent efficient?
+  \emph{Urban Studies}, \emph{32}(1), 5--29.
+  https://doi.org/10.1080/00420989550013194
+\item
+  Hansen, W. G. (1959). How accessibility shapes land use. \emph{Journal
+  of the American Institute of Planners}, \emph{25}(2), 73--76.
+  https://doi.org/10.1080/01944365908978307
+\item
+  Heyman, A. V., Law, S., \& Berghauser Pont, M. (2018). How is location
+  measured in housing valuation? A systematic review of accessibility
+  specifications in hedonic price models. \emph{Urban Science},
+  \emph{3}(1), 3. https://doi.org/10.3390/urbansci3010003
+\item
+  Khoshnoud, M., Sirmans, G. S., \& Zietz, E. N. (2023). The evolution
+  of hedonic pricing models. \emph{Journal of Real Estate Literature},
+  \emph{31}(1), 1--47. https://doi.org/10.1080/09277544.2023.2201020
+\item
+  Levinson, D. M., \& Wu, H. (2020). Towards a general theory of access.
+  \emph{Journal of Transport and Land Use}, \emph{13}(1), 129--158.
+\item
+  Liu, X., Chen, X., Orford, S., Tian, M., \& Zou, G. (2024). Does
+  better accessibility always mean higher house prices?
+  \emph{Environment and Planning B: Urban Analytics and City Science},
+  \emph{51}(9), 2179--2195. https://doi.org/10.1177/23998083241242212
+\item
+  Rosen, S. (1974). Hedonic prices and implicit markets: Product
+  differentiation in pure competition. \emph{Journal of Political
+  Economy}, \emph{82}(1), 34. https://doi.org/10.1086/260169
+\item
+  Siddiq, F., \& Taylor, B. D. (2021). Tools of the trade?: Assessing
+  the progress of accessibility measures for planning practice.
+  \emph{Journal of the American Planning Association}, \emph{87}(4),
+  497--511.
+\item
+  Wallace, N. E., \& Meese, R. A. (1997). The construction of
+  residential housing price indices: A comparison of repeat-sales,
+  hedonic-regression, and hybrid approaches. \emph{The Journal of Real
+  Estate Finance and Economics}, \emph{14}(1/2), 51--73.
+  https://doi.org/10.1023/A:1007715917198
+\item
+  Wachs, M., \& Kumagai, T. G. (1973). Physical accessibility as a
+  social indicator. \emph{Socio-Economic Planning Sciences},
+  \emph{7}(5), 437--456.
+\item
+  Wei, C., Fu, M., Wang, L., Yang, H., Tang, F., \& Xiong, Y. (2022).
+  The research development of hedonic price model-based real estate
+  appraisal in the era of big data. \emph{Land}, \emph{11}(3), 334.
+  https://doi.org/10.3390/land11030334
+\end{itemize}
+
+
+
+
+\end{document}

@@ -15,7 +15,7 @@ format:
           left=1in,
           right=1in}
         \usepackage{setspace}
-        \setstretch{1}
+        \setstretch{1.15}
         \usepackage{fontspec}
         \setmainfont{Cormorant Garamond}
         \setsansfont{Fira Sans}
@@ -46,13 +46,21 @@ SPRING 2025
 
 \end{center}
 
-# INTRODUCTION
+# 1. INTRODUCTION
 
-XXX
+Accessibility—the ease of reaching destinations—has been a foundational concept in urban planning since the mid-20th century. It captures the interplay between transportation networks and the spatial distribution of urban opportunities, considering the time, cost, and effort associated with travel. In rapidly evolving and spatially fragmented urban contexts, accessibility plays a central role in shaping patterns of spatial inequality and urban form. Among the most tangible reflections of this influence are housing prices, which not only reflect the market value of physical structures, but also the locational advantages embedded in their surroundings.
+
+Hedonic pricing models (HPMs), grounded in Rosen’s (1974) framework, estimate how various property attributes—such as location, size, and amenities—are capitalized into housing prices. Given the heterogeneous nature of real estate, HPMs are particularly useful for disentangling the contribution of individual features to price variation. Accessibility remains a key, yet inconsistently measured, component in these models. Most commonly, it is represented by simplified proximity metrics—often focused solely on employment—while broader access to urban amenities remains underexplored. Moreover, the use of aggregated spatial units introduces the Modifiable Areal Unit Problem (MAUP), where arbitrary boundary definitions can distort statistical relationships and mask localized variation.
+
+In response to these gaps, the present study develops a granular and multimodal analysis of how sector-specific accessibility influences housing prices in Mexico City. Drawing on an original dataset of web-scraped, georeferenced real estate listings and accessibility indices calculated at the listing level, the research evaluates the relationship between property values and access to a diverse array of destinations, including employment, education, health, retail, gastronomy, recreation, and public space. While earlier studies—such as Atuesta et al. (2018)—have shown that job accessibility is capitalized into real estate prices in Mexico City, prior analyses have often remained limited to employment-focused or aggregated accessibility measures.
+
+This study contributes to three areas of inquiry. First, it broadens the understanding of how different types of amenities beyond employment are valued in the housing market, questioning whether accessibility is universally perceived as an amenity or whether certain forms of proximity function as disamenities. Second, it refines the methodological approach by addressing MAUP through the use of fine-grained origin data and sector-specific destinations. Third, it adds empirical evidence from a Global South metropolis—where land value dynamics may diverge from conventional assumptions—thereby contributing to a more geographically diverse urban economic literature.
+
+The remainder of this thesis is organized as follows. Chapter 2 reviews the relevant literature on accessibility, its measurement, and its integration into hedonic pricing models. Chapter 3 outlines the methodological framework, detailing the data sources, construction of the accessibility index, and the econometric specification, including all explanatory variables. Chapter 4 presents the empirical results, covering: (i) the descriptive and spatial analysis of accessibility patterns at the block level across Mexico City, (ii) an overview of the real estate market and its spatial relationship to accessibility, and (iii) the results of the hedonic pricing models. Chapter 5 provides a discussion of the findings, focusing on the differentiated impacts of accessibility across sectors and transport modes. Chapter 6 concludes with a summary of key findings, theoretical and policy implications, and recommendations for future research.
 
 \newpage
 
-# LITERATURE REVIEW
+# 2. LITERATURE REVIEW
 
 ## ACCESSIBILITY AS A CONCEPT
 
@@ -100,7 +108,7 @@ The authors argue that these challenges cannot be addressed through infrastructu
 
 \newpage
 
-# METHODOLOGY
+# 3. METHODOLOGY
 
 This study adopts a theoretical framework that explores the relationship between real estate prices and three key dimensions: accessibility, dwelling quality, and neighborhood characteristics. The following sections detail the procedures for data collection and processing related to each of these components.
 
@@ -147,7 +155,7 @@ While these violations do not bias the estimated coefficients themselves under O
 
 \newpage
 
-# RESULTS
+# 4. RESULTS
 
 This section presents the main empirical findings of the study. It is organized into three parts. First, we analyze the construction and behavior of the accessibility index, examining its methodological structure, sector-specific patterns, and spatial distribution. Second, we explore the dynamics of the real estate market, including overall price distributions and their relationship to accessibility levels. Finally, we present the results of hedonic price models that quantify the influence of accessibility and other factors on real estate values.
 
@@ -299,7 +307,7 @@ These results highlight the differentiated influence of private accessibility di
 
 \newpage
 
-# DISCUSSION
+# 5. DISCUSSION
 
 The findings of this study offer important insights into how various forms of accessibility are capitalized into housing prices in Mexico City. Drawing from hedonic pricing models, the results highlight spatial disparities in access to employment and amenities, while also revealing the differentiated influence of accessibility across transportation modes and destination types. These patterns contribute to ongoing debates in the accessibility literature regarding how access is measured, perceived, and valued in real estate markets (Boisjoly & El-Geneidy, 2017; Levinson & Wu, 2020; Heyman et al., 2018).
 
@@ -327,9 +335,17 @@ These results highlight a tension between accessibility as a normative planning 
 
 \newpage
 
-# CONCLUSION
+# 6. CONCLUSION
 
-XXX
+This thesis examined how sector-specific accessibility is capitalized into housing prices in Mexico City, offering new insights into the city’s spatial and economic dynamics. By integrating real estate data with granular, disaggregated, and multimodal accessibility indices, the analysis found that employment accessibility is the strongest and most consistently valued form—particularly under private transport scenarios. In contrast, access to education, health services, and public spaces showed weaker or inconsistent associations, while retail accessibility consistently emerged as a potential disamenity across all model specifications.
+
+These findings challenge the conventional assumption that accessibility uniformly enhances real estate value. Instead, they point to a more complex, context-dependent relationship likely shaped by quality differentiation, neighborhood perceptions, and the nature of specific sectors. While accessibility remains central to urban policy goals aimed at improving equity and mobility, the housing market may assign negative or neutral value to certain forms of proximity—especially when they conflict with preferences for exclusivity, privacy, or distance from urban intensity.
+
+Methodologically, this study advances the literature through the use of granular origins and disaggregated destinations, and by employing both cumulative and gravity-based accessibility measures. Although the regression framework included detailed neighborhood controls, the analysis encountered substantial multicollinearity among some accessibility indicators due to the spatial correlation of many urban amenities. While all variables were retained to preserve sectoral interpretability, this multicollinearity likely inflated standard errors and may have obscured overlapping effects. To mitigate these issues, clustered standard errors were applied to account for correlation structures within municipalities.
+
+Future research could build on this foundation by incorporating measures of amenity quality, refining sectoral classifications, and evaluating accessibility based on job counts or service capacity rather than simple establishment presence. In addition, accounting for traffic congestion would enhance the interpretability and policy relevance of private accessibility estimates. Finally, as noted in the literature, the integration of big data and machine learning offers promising avenues—so long as transparency and interpretability remain central to their use in planning and policy contexts.
+
+Ultimately, this study highlights the value of disaggregated and context-sensitive approaches to understanding how different forms of accessibility shape housing markets. By revealing the uneven ways in which access is valued across sectors, modes, and urban geographies, the findings call attention to the complex interplay between spatial structure, market dynamics, and social equity. These insights offer a foundation for designing more targeted, evidence-based urban policies—particularly in Global South cities like Mexico City, where long-standing inequalities demand planning frameworks that reflect both behavioral realities and spatial diversity.
 
 \newpage
 
